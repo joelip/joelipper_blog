@@ -2,7 +2,14 @@
 # https://middlemanapp.com/advanced/configuration/#configuring-extensions
 
 activate :autoprefixer do |prefix|
-  prefix.browsers = "last 2 versions"
+  prefix.browsers = 'last 2 versions'
+end
+
+# Configure blog settings
+# docs: https://middlemanapp.com/basics/blogging/
+
+activate :blog do |blog|
+  blog.permalink = "posts/{title}.html"
 end
 
 # Layouts
