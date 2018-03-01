@@ -6,3 +6,4 @@ build/
 .rvmrc
 .nvmrc
 .netlify
+node_modules/
