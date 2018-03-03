@@ -12,6 +12,15 @@ activate :blog do |blog|
   blog.permalink = "posts/{title}.html"
 end
 
+# Configure the application to use webpack instead of the asset pipeline
+# https://middlemanapp.com/advanced/external-pipeline/
+
+activate :external_pipeline,
+  name: :webpack,
+  command: build? ? './node_modules/webpack/bin/webpack.js --env.prod -p' : './node_modules/webpack/bin/webpack.js --env.dev',
+  source: ".tmp/dist",
+  latency: 1
+
 # Layouts
 # https://middlemanapp.com/basics/layouts/
 
