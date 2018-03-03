@@ -1,0 +1,35 @@
+{
+  "name": "joelipper_blog",
+  "version": "1.0.0",
+  "description": "The personal blog of Joe Lipper",
+  "engines": {
+    "node": "7.10.0"
+  },
+  "scripts": {
+    "prebuild": "rimraf .tmp/dist",
+    "build": "webpack --env.prod -p",
+    "prebuild:dev": "rimraf .tmp/dist",
+    "build:dev": "webpack --env.dev",
+    "build:dev:debug": "webpack --env.dev --display-error-details",
+    "dev": "webpack --watch --env.dev",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "npm-run-all": "^2.3.0",
+    "opt-cli": "^1.5.1",
+    "rimraf": "^2.5.4",
+    "webpack": "^2.6.1",
+    "webpack-config-utils": "^2.0.0",
+    "webpack-validator": "2.2.7"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joelip/joelipper_blog.git"
+  },
+  "author": "Joe Lipper",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/joelip/joelipper_blog/issues"
+  },
+  "homepage": "http://joelipper.com"
+}
