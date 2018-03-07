@@ -1,5 +1,6 @@
 const { join, resolve } = require('path');
-const { getIfUtils } = require('webpack-config-utils');
+const ProgressBarPlugin = require('progress-bar-webpack-plugin');
+const { getIfUtils, removeEmpty } = require('webpack-config-utils');
 
 module.exports = env => {
   const { ifProd } = getIfUtils(env);
@@ -34,6 +35,9 @@ module.exports = env => {
         }
       }]
     },
+    plugins: removeEmpty([
+      new ProgressBarPlugin()
+    ])
   };
 
   return config;

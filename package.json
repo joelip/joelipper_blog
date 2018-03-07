@@ -20,6 +20,7 @@
     "babel-preset-env": "^1.6.0",
     "npm-run-all": "^2.3.0",
     "opt-cli": "^1.5.1",
+    "progress-bar-webpack-plugin": "^1.11.0",
     "rimraf": "^2.5.4",
     "webpack": "^2.6.1",
     "webpack-config-utils": "^2.0.0"
