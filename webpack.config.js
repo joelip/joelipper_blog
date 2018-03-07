@@ -7,7 +7,7 @@ module.exports = env => {
   const { ifProd, ifNotProd } = getIfUtils(env);
 
   const extractSass = new ExtractTextPlugin({
-    filename: ifProd('[name].[chunkhash].css', '[name].css')
+    filename: '[name].css'
   });
 
   const config = {
@@ -17,7 +17,7 @@ module.exports = env => {
       styles: ['./stylesheets/landing.css.sass']
     },
     output: {
-      filename: ifProd('bundle.[name].[chunkhash].js', 'bundle.[name].js'),
+      filename: 'bundle.[name].js',
       path: resolve('.tmp/dist/'),
       pathinfo: ifNotProd(),
     },
