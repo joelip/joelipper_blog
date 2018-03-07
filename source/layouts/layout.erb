@@ -7,10 +7,11 @@
           content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Use the title from a page's frontmatter if it has one -->
     <title><%= current_page.data.title || "Joe Lipper &middot; Software Developer" %></title>
+    <% binding.pry %>
     <%= stylesheet_link_tag "landing" %>
   </head>
   <body>
     <%= yield %>
-    <script src="javascripts/bundle.js"></script>
+    <script src="bundle.site.js"></script>
   </body>
 </html>
