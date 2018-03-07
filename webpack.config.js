@@ -1,11 +1,10 @@
 const { join, resolve } = require('path');
-const webpackValidator = require('webpack-validator');
 const { getIfUtils } = require('webpack-config-utils');
 
 module.exports = env => {
   const { ifProd } = getIfUtils(env);
 
-  return webpackValidator({
+  const config = {
     context: resolve('source/javascripts'),
     entry: './site.js', // Path is relative to the "context" path
     output: {
@@ -14,5 +13,7 @@ module.exports = env => {
       publicPath: '/dist/javascripts/',
     },
     devtool: ifProd('source-map', 'eval'),
-  })
+  };
+
+  return config;
 }
