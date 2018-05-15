@@ -117,11 +117,11 @@ var int = new BigInt([3,2,1]);
 var intStr = int.toString(); // => returns '123'
 ```
 
-<p data-height="265" data-theme-id="0" data-slug-hash="Ryxmpw" data-default-tab="js,result" data-user="joelip" data-embed-version="2" data-pen-title="BigInt Demo 1" class="codepen">See the Pen <a href="https://codepen.io/joelip/pen/Ryxmpw/">BigInt Demo 1</a> by Joe Lipper (<a href="https://codepen.io/joelip">@joelip</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+<p data-height="265" data-theme-id="0" data-slug-hash="Ryxmpw" data-default-tab="result" data-user="joelip" data-embed-version="2" data-pen-title="BigInt Demo 1" class="codepen">See the Pen <a href="https://codepen.io/joelip/pen/Ryxmpw/">BigInt Demo 1</a> by Joe Lipper (<a href="https://codepen.io/joelip">@joelip</a>) on <a href="https://codepen.io">CodePen</a>.</p>
 
 The largest integer we can represent in JavaScript precisely is `9007199254740992`. With any number higher than this, we get behavior that we don't want. For example, adding one to this number still yields `9007199254740992`. Test it out below:
 
-<p data-height="265" data-theme-id="0" data-slug-hash="XqVwZx" data-default-tab="html,result" data-user="joelip" data-embed-version="2" data-pen-title="Misbehaving large numbers" class="codepen">See the Pen <a href="https://codepen.io/joelip/pen/XqVwZx/">Misbehaving large numbers</a> by Joe Lipper (<a href="https://codepen.io/joelip">@joelip</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+<p data-height="265" data-theme-id="0" data-slug-hash="XqVwZx" data-default-tab="result" data-user="joelip" data-embed-version="2" data-pen-title="Misbehaving large numbers" class="codepen">See the Pen <a href="https://codepen.io/joelip/pen/XqVwZx/">Misbehaving large numbers</a> by Joe Lipper (<a href="https://codepen.io/joelip">@joelip</a>) on <a href="https://codepen.io">CodePen</a>.</p>
 
 Before we extend our `BigInt` class to handle addition so we can do precise calculations on numbers bigger than `9007199254740992`, let's make it easier to pass in integers by allowing our constructor to accept a string of a number or an array and assigning them to the proper properties. This will save us from having to write out longer arrays as numbers get bigger:
 
@@ -308,6 +308,11 @@ function BigInt(value) {
   //...
 }
 ```
+
+With this approach, we can try adding one to the largest JavaScript integer and see what we get with our solution:
+
+<p data-height="265" data-theme-id="0" data-slug-hash="ZovdGw" data-default-tab="result" data-user="joelip" data-embed-version="2" data-pen-title="BigInt Demo with Add" class="codepen">See the Pen <a href="https://codepen.io/joelip/pen/ZovdGw/">BigInt Demo with Add</a> by Joe Lipper (<a href="https://codepen.io/joelip">@joelip</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+
 
 ### Closing Notes
 
