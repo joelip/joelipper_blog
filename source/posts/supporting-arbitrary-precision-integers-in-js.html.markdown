@@ -3,11 +3,14 @@
 title: Supporting Arbitrary-Precision Integers in JavaScript
 slug: supporting-arbitrary-precision-integers-in-js
 date: 2018-05-11 22:09 UTC
+layout: posts
 tags: javascript
 
 ---
 
-## Supporting Arbitrary-Precision Integers in JavaScript
+<h2 class="no-top-margin">
+  Supporting Arbitrary-Precision Integers in JavaScript
+</h2>
 
 The Google Chrome team recently announced that [they're adding support for arbitrary precision integers](https://developers.google.com/web/updates/2018/05/bigint). This opens up JavaScript to natively support some use cases that previously relied on user libraries. Some these use cases include:
 
