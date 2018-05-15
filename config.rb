@@ -9,7 +9,8 @@ end
 # docs: https://middlemanapp.com/basics/blogging/
 
 activate :blog do |blog|
-  blog.permalink = "posts/{title}.html"
+  blog.sources = "posts/{slug}.html"
+  blog.permalink = "posts/{slug}.html"
 end
 
 # Layouts
