@@ -1,3 +1,5 @@
+@import './variables.css.sass'
+
 body
   background-color: #FBFEF9
   color: #191923
@@ -15,16 +17,69 @@ main
   position: relative
   width: 100%
 
-
-h1, h2, h3, h4, h5, h6, p, .colors, .font-styles
+h1, h2, h3, h4, h5, h6, p, blockquote
   display: block
+  line-height: 1.25
   position: relative
   width: 100%
+
+  &.no-top-margin
+    margin-top: 0
+
+h1
+  font-size: 60px
+
+h2
+  font-size: 48px
+
+h3
+  font-size: 36px
+
+h4
+  font-size: 24px
+
+h5
+  font-size: 20px
+
+h6
+  font-size: 16px
 
 p
   font-family: monospace
   font-size: 20px
-  line-height: 1.25
+
+li
+  font-family: monospace
+  font-size: 20px
+
+blockquote
+  box-sizing: border-box
+  border-left: 0.25em solid #56567b
+  color: $sidenote-purple
+  font-size: 16px
+  margin: 16px 0
+  padding-left: 16px
+
+  p
+    font-size: 16px
+    position: relative
+    width: 100%
+
+header
+  a
+    font-size: 16px
+
+// Common constraints
+
+.readable-max-width
+  display: block
+  margin: auto
+  width: $max-width
+
+  @media only screen and (min-device-width: 320px) and (max-device-width: 480px) and (orientation: portrait)
+    box-sizing: border-box
+    padding: 16px
+    width: 100%
 
 // Specific Text Styles
 

@@ -1,0 +1,31 @@
+@import './variables.css.sass'
+
+main
+  box-sizing: border-box
+  display: block
+  margin: auto
+  width: $max-width
+
+  @media #{$mobile-breakpoint}
+    padding: 24px 26px
+    width: 100%
+
+img
+  position: relative
+  width: 100%
+
+pre
+  background-color: #f8f8f8
+  border: 1px solid #ddd
+  border-radius: 3px
+  box-sizing: border-box
+  overflow-x: scroll
+  padding: 6px 10px
+  position: relative
+  width: 100%
+
+p > code
+  background-color: #f8f8f8
+  border: 1px solid #ddd
+  border-radius: 3px
+  padding: 0px 4px

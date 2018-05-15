@@ -1,11 +1,8 @@
-$max-width: 560px
+@import './variables.css.sass'
 
 .AboutMe
   display: block
   width: $max-width
-
-  @media only screen and (min-device-width: 320px) and (max-device-width: 480px) and (orientation: portrait)
-    width: 100%
 
   @media only screen and (min-device-width: 320px) and (max-device-width: 480px) and (orientation: portrait)
     box-sizing: border-box
@@ -37,7 +34,7 @@ $max-width: 560px
     margin-bottom: 16px
 
     p
-      color: #7c7ca2
+      color: $sidenote-purple
       display: inline
       font-size: 16px
 
