@@ -1,0 +1,28 @@
+---
+title: Joe Lipper &middot; Writing
+layout: landing
+---
+
+<main class="readable-max-width">
+  <header>
+    <h4>Writing</h4>
+    <a href="/">&#8592;&nbsp;Back to landing</a>
+  </header>
+  <section>
+    <p>
+      This is the home of my writing. It's not much right now, but I'm hoping to add to it soon.
+    </p>
+    <ul>
+      <% blog.articles.each do |article| %>
+        <li class="ArticleListItem">
+          <a href="<%= article.url %>">
+            <%= article.title %>
+          </a>
+          <span class="italic">
+            &#40;Written <%= article.date.strftime("%b %e, %Y") %>&#41;
+          </span>
+        </li>
+      <% end %>
+    </ul>
+  </section>
+</main>
