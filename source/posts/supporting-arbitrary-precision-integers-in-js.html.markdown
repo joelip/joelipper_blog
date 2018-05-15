@@ -12,6 +12,10 @@ tags: javascript
   Supporting Arbitrary-Precision Integers in JavaScript
 </h2>
 
+<header>
+  <a href="/">&#8592;&nbsp;Back to landing</a>
+</header>
+
 The Google Chrome team recently announced that [they're adding support for arbitrary precision integers](https://developers.google.com/web/updates/2018/05/bigint). This opens up JavaScript to natively support some use cases that previously relied on user libraries. Some these use cases include:
 
 - handling IDs that are larger than the maximum precise integer by JavaScript's `Number` (2<sup>53</sup>)
