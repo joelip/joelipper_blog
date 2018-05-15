@@ -67,7 +67,7 @@ When we add numbers with multiple columns, we match up the columns with their co
 
 ![hand drawn picture of adding 456 to 123](images/sum_123_456.png)
 
->I will not be apologizing for my handwriting at this time, but thank you of thinking about it.
+>I will not be apologizing for my handwriting at this time, but thank you for thinking about it.
 
 #### Carrying Digits
 
