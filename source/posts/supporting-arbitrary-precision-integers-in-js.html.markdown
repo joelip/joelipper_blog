@@ -22,7 +22,7 @@ The Google Chrome team recently announced that [they're adding support for arbit
 - handling timestamps with higher precision
 - using JavaScript for cryptographic algorithms that rely on extremely large prime numbers
 
-Before their announcement, I was working on implementing a message encryption/decryption module using the [RSA](https://simple.wikipedia.org/wiki/RSA_algorithm) algorithm written in Node.js to learn more about cryptography, and started going down a rabbit-hole on how you could handle large integers in JavaScript without native support. In my exploration, I looked at a lot of user libraries that handle big integers (mostly [Peter Olsen's BigInteger.js](https://github.com/peterolson/BigInteger.js)), but also decided to work on my own implementation to better understand how to work with large integers in any language that doesn't support them natively. I was also interested in how difficult it was to implement arithmetic operations acting on these large numbers.
+Before their announcement, I was working on implementing a message encryption/decryption module using the [RSA](https://simple.wikipedia.org/wiki/RSA_algorithm) algorithm written in Node.js to learn more about cryptography, and started going down a rabbit-hole on how to  handle large integers in JavaScript without native support. In my exploration, I looked at a lot of user libraries that handle big integers (mostly [Peter Olsen's BigInteger.js](https://github.com/peterolson/BigInteger.js)), but also decided to work on my own partial implementation of these libraries to better understand how to work with large integers in any language that doesn't support them natively. This post is an attempt to consolidate what I learned.
 
 >Note: I'm trying to make this resource as understandable as possible to people who are just learning to program in JavaScript, so if you have questions or want something clarified, [tweet me](https://twitter.com/joelipper), and I may update the post to reflect your feedback.
 
@@ -71,7 +71,7 @@ When we add numbers with multiple columns, we match up the columns with their co
 
 #### Carrying Digits
 
-What happened when we adding two numbers in a single column whose sum was 10 or more? A 1 had to be _carried_ from the previous column to the column [an order of magnitude](https://en.wikipedia.org/wiki/Order_of_magnitude) higher.
+What happened when adding two numbers in a single column whose sum was 10 or more? A 1 had to be _carried_ from the previous column to the column [an order of magnitude](https://en.wikipedia.org/wiki/Order_of_magnitude) higher.
 
 <a name="carrying-diagram"></a>
 ![diagram of carrying digits](images/carrying-digits.jpg)
@@ -84,7 +84,7 @@ While JavaScript might not have native support (yet!) for integers that are larg
 
 #### Implementing a Small Constructor for Handling Big Numbers
 
-To make things easier on the math, let's make it so that the numbers in our array are in the reverse order so that each index corresponds to the power of ten the digit represents. So to represent `123`, we would use the array `[3,2,1]` so that the column that represents 10<sup>0</sup> is at index 0 (`3`), the column that represents 10<sup>1</sup> is at index 1 (`2`), and the column that represents 10<sup>2</sup> is at index 2 (`1`).
+To make things easier on the math, let's make it so that the numbers in our array are in reverse order so that each index corresponds to the power of ten the digit represents. So to represent `123`, we would use the array `[3,2,1]` so that the column that represents 10<sup>0</sup> is at index 0 (`3`), the column that represents 10<sup>1</sup> is at index 1 (`2`), and the column that represents 10<sup>2</sup> is at index 2 (`1`).
 
 Let's encapsulate this idea into a JavaScript constructor function, which has one property for now, an integer represented by an array with each element representing a digit and its corresponding power of 10.
 
@@ -103,11 +103,11 @@ Let's also add a way of displaying this number in a more readable form by creati
 function BigInt(intArray) {
   this.value = intArray;
 
-  this.toString = function convertArrayToString(array) {
+  this.toString = function convertArrayToString() {
     var numString = '';
 
-    for (var i = array.length - 1; i >= 0; i--) {
-      numString += array[i];
+    for (var i = this.value.length - 1; i >= 0; i--) {
+      numString += this.value[i];
     }
 
     return numString;
@@ -127,17 +127,17 @@ The largest integer we can represent in JavaScript precisely is `900719925474099
 
 <p data-height="265" data-theme-id="0" data-slug-hash="XqVwZx" data-default-tab="result" data-user="joelip" data-embed-version="2" data-pen-title="Misbehaving large numbers" class="codepen">See the Pen <a href="https://codepen.io/joelip/pen/XqVwZx/">Misbehaving large numbers</a> by Joe Lipper (<a href="https://codepen.io/joelip">@joelip</a>) on <a href="https://codepen.io">CodePen</a>.</p>
 
-Before we extend our `BigInt` class to handle addition so we can do precise calculations on numbers bigger than `9007199254740992`, let's make it easier to pass in integers by allowing our constructor to accept a string of a number or an array and assigning them to the proper properties. This will save us from having to write out longer arrays as numbers get bigger:
+Before we extend our `BigInt` class to handle addition so we can do precise calculations on numbers bigger than `9007199254740992`, let's make it easier to pass in integers by allowing our constructor to _also_ accept a string of the number and assigning it to the proper properties. This will save us from having to write out longer arrays as numbers get bigger:
 
 ```js
 function BigInt(value) {
   this.value = parseValue(value);
 
-  this.toString = function convertArrayToString(array) {
+  this.toString = function convertArrayToString() {
     var numString = '';
 
-    for (var i = array.length - 1; i >= 0; i--) {
-      numString += array[i];
+    for (var i = this.value.length - 1; i >= 0; i--) {
+      numString += this.value[i];
     }
 
     return numString;
@@ -186,7 +186,7 @@ int.add('20006')
 int.toString();
 ```
 
-We're heading in the right direction, but there are a questions not answered with this approach:
+We're heading in the right direction, but there cases where this approach falls apart:
 
 - What happens when `a` has a greater length than `b`? What about vice-versa?
 - When we have two numbers at an index that add up to 10 or more, we need to carry the 1 into the next column. How can we accommodate that?
@@ -229,7 +229,7 @@ int.toString();
 This works! A couple of notes about this approach:
 
 - At `#1` during the assignment of `smallerArray`, we're not comparing the size of the arrays because what we really need is the other array that isn't `largerArray`. This makes sure we're always adding two different arrays, even when they're of equal length.
-- At `#2`, we're only computing the sum of the two corresponding elements in the array, _if there is a column for it in the smaller array_. Otherwise, we're not updating the array at that place.
+- At `#2`, we're only computing the sum of the two corresponding elements in the array, _if there is a column for it in the smaller array_. Otherwise, we're not updating the element's value.
 
 When we run this with a number that carries a digit:
 
@@ -243,7 +243,7 @@ We get a result we don't want with the ten sitting in the ones column. Let's fix
 
 #### Handling Carried Digits
 
-We'll approach carrying by checking to see if the sum of the elements is greater than our base (which is `10`, or the threshold at which we need to carry a `1`) and if it is, we'll:
+We'll approach carrying by checking to see if the sum of the elements is greater than our base (which is `10`, or the threshold at which we need to carry a `1`), and if it is, we'll:
 
 - increment the number at the next order of magnitude (i.e. the number at the next index)
 - subtract our base (`10`) from the current spot so that whatever is in the one's column is leftover
