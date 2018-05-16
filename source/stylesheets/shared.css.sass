@@ -1,7 +1,7 @@
 @import './variables.css.sass'
 
 body
-  background-color: #FBFEF9
+  background-color: white
   color: #191923
   font-family: -apple-system, BlinkMacSystemFont, "Avenir Next", "Avenir", "Helvetica Neue", "Helvetica", "Fira Sans", "Roboto", "Noto", "Droid Sans", "Cantarell", "Oxygen", "Ubuntu", "Liberation Sans", sans-serif
   margin: 0
@@ -19,7 +19,6 @@ main
 
 h1, h2, h3, h4, h5, h6, p, blockquote
   display: block
-  line-height: 1.25
   position: relative
   width: 100%
 
@@ -28,35 +27,57 @@ h1, h2, h3, h4, h5, h6, p, blockquote
 
 h1
   font-size: 60px
+  line-height: $title-line-height
+  margin-bottom: 40px
+  margin-top: 40px
 
 h2
   font-size: 48px
+  line-height: $title-line-height
+  margin-bottom: 40px
+  margin-top: 40px
 
 h3
   font-size: 36px
+  line-height: $title-line-height
+  margin-bottom: 28px
+  margin-top: 28px
 
 h4
   font-size: 24px
+  line-height: $title-line-height
+  margin-bottom: 18px
+  margin-top: 18px
 
 h5
   font-size: 20px
+  line-height: $title-line-height
+  margin-bottom: 16px
+  margin-top: 16px
 
 h6
   font-size: 16px
+  line-height: $title-line-height
+  margin-bottom: 12px
+  margin-top: 12px
 
 p
-  font-family: monospace
-  font-size: 20px
+  font-family: 'CrimsonText', serif
+  font-size: 18px
+  line-height: $content-line-height
 
 li
-  font-family: monospace
-  font-size: 20px
+  font-family: 'CrimsonText', serif
+  font-size: 18px
+  line-height: $content-line-height
+  margin-bottom: 8px
 
 blockquote
   box-sizing: border-box
   border-left: 0.25em solid #56567b
   color: $sidenote-purple
   font-size: 16px
+  line-height: $content-line-height
   margin: 16px 0
   padding-left: 16px
 
