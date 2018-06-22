@@ -196,7 +196,7 @@ We're heading in the right direction, but there cases where this approach falls 
 
 #### Handling Numbers of Different Lengths
 
-One way we could handle numbers of different lengths is by figuring out which one is longer (has more columns) and adding the the shorter one to each digit until we run out of digits to add. At that point we can just retain the values of whatever the longer number has in its columns where there is no corresponding value.
+One way we could handle numbers of different lengths is by figuring out which one is longer (has more columns) and adding the shorter one to each digit until we run out of digits to add. At that point we can just retain the values of whatever the longer number has in its columns where there is no corresponding value.
 
 ![adding small to large and retaining the digits of the longer number](images/handling-numbers-of-different-length.jpg)
 
@@ -212,7 +212,8 @@ function BigInt(value) {
     var smallerArray = largerArray ===  a ? b : a; // See #1 below
 
     for (var i = 0; i < largerArray.length; i++) {
-      if (typeof smallerArray[i] !== 'undefined') largerArray[i]+= smallerArray[i]; // See #2 below
+      if (typeof smallerArray[i] !== 'undefined') largerArray[i] += smallerArray[i];
+      // See #2 below
     }
     this.value = largerArray;
 
@@ -337,12 +338,12 @@ If you're looking to learn more about how you can use BigInts in V8 (and Chrome)
 
 Some other resources that were helpful/interesting in my research for this post:
 
-- [This post on Large Integer Arithmetic](http://faculty.cse.tamu.edu/djimenez/ut/utsa/cs3343/lecture20.html).
-- [This research paper on efficient algorithms for cryptography](https://www.hindawi.com/journals/jam/2014/107109/).
+- [This post on Large Integer Arithmetic](http://faculty.cse.tamu.edu/djimenez/ut/utsa/cs3343/lecture20.html)
+- [This research paper on efficient algorithms for cryptography](https://www.hindawi.com/journals/jam/2014/107109/)
 - [Mozilla's progression of adding support for BigInts](https://bugzilla.mozilla.org/show_bug.cgi?id=1366287)
 - [The TC39 proposal of `BigInt`](https://tc39.github.io/proposal-bigint/)
 - [This Medium post on JavaScript's `Number` type](https://medium.com/dailyjs/javascripts-number-type-8d59199db1b6)
-- [Section 3.5 of _Computer Organization and Design_](https://www.amazon.com/Computer-Organization-Design-MIPS-Fifth/dp/0124077269/ref=sr_1_1?ie=UTF8&qid=1525992926&sr=8-1&keywords=computer+organization+and+design) which is great primer on how all this stuff works on a hardware level.
+- [Section 3.5 of _Computer Organization and Design_](https://www.amazon.com/Computer-Organization-Design-MIPS-Fifth/dp/0124077269/ref=sr_1_1?ie=UTF8&qid=1525992926&sr=8-1&keywords=computer+organization+and+design) which is great primer on how all this stuff works on a hardware level
 - All hand drawings were done with the pencil tool in [Figma](https://www.figma.com/).
 
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
